@@ -1,21 +1,51 @@
-# brainstorms/ — pha Brainstorming
+# brainstorms/ — điểm vào tự động (dev chỉ viết TODO)
 
-Thư mục này là pha **brainstorming**: chốt vấn đề + hướng tiếp cận trước khi đặc tả.
+Đây là **điểm vào duy nhất cho dev**. Dev KHÔNG viết design/spec/code tay. Dev chỉ:
 
-## Nhiệm vụ của AI ở đây
+1. Tạo/ mở 1 file `YYMMDD-<slug>.md` trong thư mục này.
+2. Thêm ý tưởng dưới dạng **TODO** ở mục `## TODO (dev)`.
 
-Khi làm việc trong thư mục này, sau khi giúp người dùng chốt ý tưởng, **luôn gợi ý đi tiếp
-theo workflow**:
+Phần còn lại **AI tự động chạy**.
+
+## Cấu trúc file brainstorm (bắt buộc)
+
+```markdown
+## TODO (dev)
+- [ ] <việc / ý tưởng dev muốn làm>
+- [ ] ...
+
+## Summary (AI)
+<!-- AI tự ghi/ cập nhật khối này NGAY DƯỚI mục TODO. Dev không sửa tay. -->
+```
+
+- Dev chỉ đụng `## TODO (dev)`. Khối `## Summary (AI)` do AI sở hữu.
+- TODO chưa tick = AI nhận việc; AI tick `[x]` khi chạy xong cả pipeline cho mục đó.
+
+## AI tự động làm gì
+
+Khi thấy TODO chưa xử lý (chưa tick, chưa có trong Summary), chạy **liền mạch** cả pipeline,
+KHÔNG dừng hỏi giữa các pha (continuous execution). Thứ tự:
 
 ```
-brainstorm → design → openspecs → code
+brainstorm(TODO) → design → openspecs(spec) → code → review
 ```
 
-- **brainstorm** (ở đây): làm rõ vấn đề, hướng, giả định, câu hỏi mở.
-- **design**: sang `../design/` — cách làm, boundary file/module, data model, task plan.
-- **openspecs**: đặc tả qua OpenSpec — `/opsx:propose "<tên-change>"` sinh proposal + specs +
-  design + tasks trong `openspec/changes/<tên-change>/`.
-- **code**: hiện thực ở `../code/` (TDD: test đỏ trước), rồi người review.
+1. **design** → tạo `../design/YYMMDD-<slug>.md`: cách làm, boundary file/module, data model, task plan.
+2. **openspecs (spec)** → `/opsx:propose "<slug>"`: sinh `openspec/changes/<slug>/` (proposal + specs + design + tasks).
+3. **code** → hiện thực ở `../code/<slug>/` theo **TDD** (viết test, xem fail đỏ, rồi code cho xanh).
+4. **review** → tự `/code-review` + chạy test; sửa hết CRITICAL/HIGH trước khi báo dev.
 
-Mỗi artifact brainstorm: `YYMMDD-<slug>.md`. Chốt xong thì nhắc người dùng bước kế là
-`design`, đừng nhảy thẳng vào code.
+Xong mỗi mục: tick `[x]` TODO đó và cập nhật **Summary** với link + trạng thái từng pha.
+
+## Khối Summary — định dạng
+
+| TODO | design | openspecs | code | review | status |
+|---|---|---|---|---|---|
+| <tóm tắt todo> | `../design/<f>.md` | `openspec/changes/<slug>/` | `../code/<slug>/` | test ✓ / findings | done / in-progress / blocked |
+
+## Quy tắc an toàn
+
+- TODO mơ hồ (ảnh hưởng scope/hành vi/acceptance) → ghi **giả định** vào design + 1 dòng ở
+  Summary (`assumption: ...`), vẫn chạy tiếp. Chỉ **dừng hỏi dev** khi mơ hồ thật sự chặn.
+- TODO chạm code sản phẩm thật (ngoài `code/` demo) → dừng, hỏi trước (RED).
+- Luôn TDD: không viết code khi chưa có test đỏ.
