@@ -1,0 +1,12 @@
+# Machine-local infra & secrets — KHÔNG commit (credential nằm ngoài version control).
+.claude/infrastructure.md
+.claude/secrets.env
+# Phòng thủ thêm:
+.claude/secrets*.env
+.claude/*.local.env
+.claude/*.local.yaml
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
