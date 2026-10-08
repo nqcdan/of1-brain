@@ -2,7 +2,7 @@
 
 Đây là **điểm vào duy nhất cho dev**. Dev KHÔNG viết design/spec/code tay. Dev chỉ:
 
-1. Tạo/ mở 1 file `YYMMDD-<slug>.md` trong thư mục này.
+1. Tạo/ mở 1 file `<slug>.md` trong thư mục này.
 2. Thêm ý tưởng dưới dạng **TODO** ở mục `## TODO (dev)`.
 
 Phần còn lại **AI tự động chạy**.
@@ -30,7 +30,7 @@ KHÔNG dừng hỏi giữa các pha (continuous execution). Thứ tự:
 brainstorm(TODO) → design → openspecs(spec) → code → review
 ```
 
-1. **design** → tạo `../design/YYMMDD-<slug>.md`: cách làm, boundary file/module, data model, task plan.
+1. **design** → tạo `../design/<slug>.md`: cách làm, boundary file/module, data model, task plan.
 2. **openspecs (spec)** → `/opsx:propose "<slug>"`: sinh `openspec/changes/<slug>/` (proposal + specs + design + tasks).
 3. **code** → hiện thực ở `../code/<slug>/` theo **TDD** (viết test, xem fail đỏ, rồi code cho xanh).
 4. **review** → tự `/code-review` + chạy test; sửa hết CRITICAL/HIGH trước khi báo dev.
