@@ -13,13 +13,22 @@ code sản phẩm để truy vết và tái dùng.
 | `design/` | Cách làm: boundary file/module, data model, API, task plan cho AI |
 | `code/` | Hiện thực & sản phẩm code AI sinh (hoặc link/submodule tới repo code) |
 
-## Vòng đời
+## Vòng đời workflow
 
 ```
-brainstorms → openspecs → design → code
-  (người)      (người)    (người)   (AI + review người)
-                   └── cổng Ready-for-AI ──┘
+brainstorming → spec → design → spec-review → implementation → review
+   (người)     (người) (người)   (AI critic)     (AI code)       (dev)
+                          └──── cổng Ready-for-AI ────┘
 ```
 
-Người viết brainstorm/spec/design; qua cổng Ready-for-AI thì AI nhận việc ở `code/`;
-người review lại. Chi tiết convention/workflow tham chiếu bộ `knowledge/` trong `of1-harness`.
+- **Người** làm 3 pha đầu (brainstorming/spec/design); **AI critic** soi spec+design
+  (`spec-review`) bắt mơ hồ/thiếu trước khi code; **AI** hiện thực (`implementation`);
+  **dev** review code AI (`review`) và giữ nút merge.
+- **Đối xứng review:** AI review *design của người* · dev review *code của AI*.
+- **Cổng Ready-for-AI:** spec+design chỉ giao AI khi hết TBD, acceptance/test-list đo được,
+  boundary file/module đã chốt.
+
+Map vào 4 thư mục: `brainstorms/` (brainstorming) · `openspecs/` (spec) · `design/`
+(design + spec-review) · `code/` (implementation + review).
+
+Chi tiết convention/workflow tham chiếu bộ `knowledge/` trong `of1-harness`.
