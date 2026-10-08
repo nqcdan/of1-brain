@@ -32,3 +32,32 @@ Map vào 4 thư mục: `brainstorms/` (brainstorming) · `openspecs/` (spec) · 
 (design + spec-review) · `code/` (implementation + review).
 
 Chi tiết convention/workflow tham chiếu bộ `knowledge/` trong `of1-harness`.
+
+## OpenSpec — spec-driven cho pha spec
+
+Pha `spec` (thư mục `openspecs/`) chạy theo **OpenSpec** — framework spec-driven cho AI
+coding assistant: https://github.com/Fission-AI/openspec
+
+Bộ tích hợp Claude Code của OpenSpec đã **vendored sẵn** trong repo này (không cần cài gì
+để đọc), tại `.claude/`:
+
+- `.claude/skills/openspec-*` — 6 skill: `explore` · `propose` · `apply` · `sync-specs` ·
+  `update-change` · `archive-change`.
+- `.claude/commands/opsx/*` — 6 slash-command tương ứng: `/opsx:explore`, `/opsx:propose`,
+  `/opsx:apply`, `/opsx:sync`, `/opsx:update`, `/opsx:archive`.
+
+### Cài CLI để kích hoạt
+
+Các skill gọi CLI `openspec` (`allowed-tools: Bash(openspec:*)`), nên muốn **chạy** cần cài CLI:
+
+```bash
+npm install -g @fission-ai/openspec@latest   # hoặc: brew install openspec
+openspec init --tools claude                 # tạo thư mục dữ liệu openspec/ (specs + changes)
+```
+
+`openspec init` sinh lại `.claude/` (đã có sẵn đây) và tạo `openspec/` chứa `specs/` +
+`changes/`. Sau đó dùng vòng: `/opsx:explore` → `/opsx:propose "ý tưởng"` → `/opsx:apply`
+→ `/opsx:archive`.
+
+> Repo chỉ vendored phần skill/command (để đọc + versioned). CLI là tooling máy-local,
+> KHÔNG commit vào repo.
