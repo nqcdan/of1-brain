@@ -11,7 +11,7 @@ The AI runs **everything else automatically**.
 ## Edit scope (user ↔ AI)
 
 - User prompts **only** create/edit files inside `brainstorms/`. Every other directory
-  (`design/`, `openspecs/`, `openspec/`, `code/`, `.claude/`, `README.md`…) is **read-only to
+  (`designs/`, `openspec/`, `code/`, `.claude/`, `README.md`…) is **read-only to
   the user** or **AI-generated/owned** — the user does not edit it directly; the AI produces
   it through the pipeline.
 
@@ -39,7 +39,7 @@ When it sees an unprocessed TODO (unchecked, not yet in Summary), it runs the wh
 brainstorm(TODO) → design → openspecs(spec) → code → review
 ```
 
-1. **design** → create `../design/<slug>.md`: approach, file/module boundary, data model, task plan.
+1. **design** → create `../designs/<slug>.md`: approach, file/module boundary, data model, task plan.
 2. **openspecs (spec)** → `/opsx:propose "<slug>"`: generate `openspec/changes/<slug>/` (proposal + specs + design + tasks).
 3. **code** → implement under `../code/<slug>/` using **TDD** (write tests, watch them fail red, then make them green).
 4. **review** → run `/code-review` + the tests; fix all CRITICAL/HIGH before reporting back to the dev.
@@ -50,7 +50,7 @@ After each item: check `[x]` that TODO and update the **Summary** with links + p
 
 | TODO | design | openspecs | code | review | status |
 |---|---|---|---|---|---|
-| <todo summary> | `../design/<f>.md` | `openspec/changes/<slug>/` | `../code/<slug>/` | tests ✓ / findings | done / in-progress / blocked |
+| <todo summary> | `../designs/<f>.md` | `openspec/changes/<slug>/` | `../code/<slug>/` | tests ✓ / findings | done / in-progress / blocked |
 
 ## One session = one topic file
 

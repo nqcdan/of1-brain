@@ -9,8 +9,8 @@ code sản phẩm để truy vết và tái dùng.
 | Thư mục | Vai trò |
 |---|---|
 | `brainstorms/` | Pha phân kỳ: vấn đề, hướng tiếp cận, giả định cần kiểm chứng (HMW → converge) |
-| `openspecs/` | Spec: yêu cầu + acceptance + "Done khi (test list)" theo lối spec-driven |
-| `design/` | Cách làm: boundary file/module, data model, API, task plan cho AI |
+| `openspec/` | Spec: yêu cầu + acceptance + "Done khi (test list)" theo lối spec-driven |
+| `designs/` | Cách làm: boundary file/module, data model, API, task plan cho AI |
 | `code/` | Hiện thực & sản phẩm code AI sinh (hoặc link/submodule tới repo code) |
 
 ## Vòng đời workflow
@@ -28,14 +28,14 @@ brainstorming → spec → design → spec-review → implementation → review
 - **Cổng Ready-for-AI:** spec+design chỉ giao AI khi hết TBD, acceptance/test-list đo được,
   boundary file/module đã chốt.
 
-Map vào 4 thư mục: `brainstorms/` (brainstorming) · `openspecs/` (spec) · `design/`
+Map vào 4 thư mục: `brainstorms/` (brainstorming) · `openspec/` (spec) · `designs/`
 (design + spec-review) · `code/` (implementation + review).
 
 Chi tiết convention/workflow tham chiếu bộ `knowledge/` trong `of1-harness`.
 
 ## OpenSpec — spec-driven cho pha spec
 
-Pha `spec` (thư mục `openspecs/`) chạy theo **OpenSpec** — framework spec-driven cho AI
+Pha `spec` (thư mục `openspec/`) chạy theo **OpenSpec** — framework spec-driven cho AI
 coding assistant: https://github.com/Fission-AI/openspec
 
 Bộ tích hợp Claude Code của OpenSpec đã **vendored sẵn** trong repo này (không cần cài gì

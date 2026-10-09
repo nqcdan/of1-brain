@@ -7,7 +7,7 @@
 
 | TODO | design | openspecs | code | review | status |
 |---|---|---|---|---|---|
-| hello world function (Python) | `../design/hello-world-python.md` | `openspec/changes/hello-world-python/` (valid --strict) | `../code/hello-world-python/` | pytest 3/3 ✓, no CRITICAL/HIGH | done |
+| hello world function (Python) | `../designs/hello-world-python.md` | `openspec/changes/hello-world-python/` (valid --strict) | `../code/hello-world-python/` | pytest 3/3 ✓, no CRITICAL/HIGH | done |
 
 - assumption: format chào cố định `"Hello, {name}!"`; tên rỗng/khoảng trắng → fallback `"World"`.
 
